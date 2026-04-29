@@ -1,8 +1,14 @@
-
 // Track the current item being requested
 let currentItem = "";
 
+
 // MODAL FUNCTIONS
+
+
+/**
+ * Opens the request modal with the selected item
+ * @param {string} item - The name of the item being requested
+ */
 function requestItem(item) {
   if (!item) return;
   
@@ -50,8 +56,7 @@ window.addEventListener("keydown", function (e) {
 });
 
 
-// FORM SUBMISSION WITH EMAILJS
-
+// FORM SUBMISSION WITH EMAILJS 
 
 document.addEventListener("DOMContentLoaded", function () {
   
@@ -136,6 +141,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   
   // SCROLL REVEAL ANIMATIONS
+  
   const revealElements = document.querySelectorAll(
     ".reveal, .reveal-stagger, .product, #about, #products, #contact"
   );
@@ -145,7 +151,6 @@ document.addEventListener("DOMContentLoaded", function () {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
           entry.target.classList.add("visible");
-
           
           if (!entry.target.classList.contains("reveal-stagger")) {
             revealObserver.unobserve(entry.target);
@@ -161,6 +166,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   revealElements.forEach((el) => revealObserver.observe(el));
 
+  
   // SMOOTH SCROLL FOR NAVIGATION LINKS
   
   document.querySelectorAll('.nav a[href^="#"]').forEach((anchor) => {
@@ -183,7 +189,7 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 
   // ACTIVE NAV LINK HIGHLIGHT ON SCROLL
-  
+
   const sections = document.querySelectorAll("section[id]");
   const navLinks = document.querySelectorAll('.nav a[href^="#"]');
 
@@ -210,9 +216,8 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   });
 
-  
   // LAZY LOAD IMAGES WITH LOADED CLASS
-  
+
   const lazyImages = document.querySelectorAll('img[loading="lazy"]');
   
   lazyImages.forEach((img) => {
@@ -220,7 +225,7 @@ document.addEventListener("DOMContentLoaded", function () {
       img.classList.add("loaded");
     });
     
-    // If image is already cached/loaded
+  
     if (img.complete) {
       img.classList.add("loaded");
     }
@@ -249,23 +254,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 // UTILITY: Email Validation
-
 function isValidEmail(email) {
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   return emailRegex.test(email);
-              }    item_details: details || "No extra details",
-    user_email: userEmail,
-    timestamp: timestamp   
-  })
-  .then(function (response) {
-    alert("🎉 Your request has been sent successfully!");
-    form.reset();
-    closeModal();
-  })
-  .catch(function (error) {
-    console.error("EmailJS error:", error);
-    alert("❌ Failed to send request: " + error.text);
-  });
-    });
-  }
-});
+}
